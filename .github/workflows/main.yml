@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: dockershelf/latex:full
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    - name: Install
+      run: |
+        apt update
+        apt install make
+
+    - name: test
+      run: make debug
+      
+    - name: Build pdf
+      run: |
+        make pdf
+        make clean
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: $CI_PROJECT_NAMESPACE-$CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA
+        path: /*
+    - name: Cache multiple paths
+      uses: actions/cache@v2
+      with:
+        path: thesis.pdf
