@@ -1,0 +1,47 @@
+\documentclass[%
+english,%
+todotools=true,%
+trtype=collection%
+]{hpitr}
+\usepackage{subfiles}
+\usepackage[backend=biber]{biblatex}
+\usepackage[math]{blindtext}
+\usepackage{threeparttable}
+\usepackage{listings}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{positioning}% To get more advances positioning options
+\usetikzlibrary{arrows}% To get more arrow heads
+\DeclareNewTOC[name=Algorithm,
+type=algorithm,
+atbegin=\KOMAoptions{captions=above},
+float]{alg}
+
+\rowcolors*{2}{lightgray!25}{}
+
+\addbibresource{chapter/projekt-kraken/projekt-kraken.bib}
+
+\begin{document}
+    \title{The importance of why and how to do work}
+    \author{Anna Author\affil{1}\and Bert Betatester\affil{2}\and Clara Creative\affil{2}}
+    \affiliation{
+        \group{Thought Envisioning Group}\\
+        \organization{Hasso Plattner Institute for Digital Engineering}\\
+        \email{{firstname.lastname}@hpi.de}
+        \and
+        \group{Thought Envisioning Group}\\
+        \organization{Hasso Plattner Institute for Digital Engineering}\\
+        \email{{firstname.lastname}@hpi.de}
+    }
+    \keywords{paper, showcase, lorem ipsum}
+    \maketitle
+    \frontmatter
+    \subfile{chapter/preface}
+    \tableofcontents
+    \mainmatter
+    
+    \subfile{chapter/projekt-kraken/projekt-kraken}
+    
+    \printbibliography
+    \backmatter
+\end{document}

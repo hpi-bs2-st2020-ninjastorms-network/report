@@ -1,0 +1,20 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+    \section{Ethernet}
+    Lorem ipsum dolor sit amet
+    
+    \begin{tikzpicture}[>=triangle 45,font=\sffamily]
+    \node (X) at (0,0) {x};
+    \node (Y) [below left=2cm and 1cm of X]  {y};% 2cm below, 1cm to the left (optional)
+    \node (Z) [below right=2cm and 1cm of X] {z};
+    \node (U) [below left=2cm and 1cm of Z]  {u};
+    \draw [semithick,->] (X) -- (Y);
+    \draw [semithick,->] (X) -- (Z);
+    \draw [semithick,->] (Y) -- (U) node [midway,below,sloped] {*};
+    \draw [semithick,->] (Z) -- (U) node [midway,below,sloped] {*};
+    \end{tikzpicture}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% End:
