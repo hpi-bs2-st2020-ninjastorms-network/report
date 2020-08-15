@@ -16,15 +16,13 @@ jobs:
     - name: Install
       run: |
         apt update
-        apt install make
-
-    - name: test
-      run: make debug
-      
+        apt install -y biber
     - name: Build pdf
       run: |
-        make pdf
-        make clean
+        lualatex main
+        biber main
+        lualatex main
+        lualatex main
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -33,4 +31,4 @@ jobs:
     - name: Cache multiple paths
       uses: actions/cache@v2
       with:
-        path: thesis.pdf
+        path: main.pdf
