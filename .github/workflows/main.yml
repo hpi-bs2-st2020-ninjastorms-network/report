@@ -9,20 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: dockershelf/latex:full
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - name: Install
-      run: |
-        apt update
-        apt install -y biber texlive-fonts-recommended texlive-fonts-extra
-    - name: Build pdf
-      run: |
-        lualatex main
-        biber main
-        lualatex main
-        lualatex main
+    - name: Compile LaTeX document
+      uses: xu-cheng/latex-action@v2
+      with:
+        root_file: main.tex
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
